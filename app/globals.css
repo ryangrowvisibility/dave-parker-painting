@@ -1,25 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* Editorial Luxury — warm cream + olive + ink + umber */
-  --cream: oklch(0.96 0.020 80);
-  --bone: oklch(0.93 0.024 78);
-  --linen: oklch(0.88 0.030 76);
-  --olive-dark: oklch(0.34 0.060 110);
-  --olive: oklch(0.50 0.075 110);
-  --olive-light: oklch(0.70 0.055 105);
-  --ink: oklch(0.18 0.018 70);
-  --ink-soft: oklch(0.36 0.018 70);
-  --ink-quiet: oklch(0.55 0.014 70);
-  --umber: oklch(0.42 0.085 55);
-  --hairline: oklch(0.18 0.018 70 / 0.12);
-  --hairline-strong: oklch(0.18 0.018 70 / 0.22);
+  /* Newspaper broadsheet — newsprint cream + ink + broadsheet red */
+  --newsprint: oklch(0.955 0.014 78);
+  --newsprint-warm: oklch(0.93 0.020 76);
+  --ink: oklch(0.14 0.012 50);
+  --ink-soft: oklch(0.32 0.014 50);
+  --ink-quiet: oklch(0.50 0.012 50);
+  --rule: oklch(0.14 0.012 50 / 0.18);
+  --rule-strong: oklch(0.14 0.012 50 / 0.40);
+  --rule-heavy: oklch(0.14 0.012 50 / 0.85);
+  --red: oklch(0.46 0.18 28);   /* broadsheet red — like NYT masthead */
+  --red-deep: oklch(0.36 0.16 26);
 
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 html, body {
-  background: var(--cream) !important;
+  background: var(--newsprint) !important;
   color: var(--ink);
 }
 
@@ -30,72 +28,102 @@ body {
 }
 
 @theme inline {
-  --color-cream: var(--cream);
-  --color-bone: var(--bone);
-  --color-linen: var(--linen);
-  --color-olive-dark: var(--olive-dark);
-  --color-olive: var(--olive);
-  --color-olive-light: var(--olive-light);
+  --color-newsprint: var(--newsprint);
+  --color-newsprint-warm: var(--newsprint-warm);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-quiet: var(--ink-quiet);
-  --color-umber: var(--umber);
-  --color-hairline: var(--hairline);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-rule-heavy: var(--rule-heavy);
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
 }
 
-::selection { background: var(--olive-dark); color: var(--cream); }
+::selection { background: var(--red); color: var(--newsprint); }
 
+/* Newsprint film-grain — subtle */
 .grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.045;
+  opacity: 0.05;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.05 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.05 0 0 0 0 0.02 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
-
-@keyframes settle {
-  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
-  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-.settle { animation: settle 800ms var(--ease) both; }
-.settle-1 { animation-delay: 80ms; }
-.settle-2 { animation-delay: 180ms; }
-.settle-3 { animation-delay: 280ms; }
-.settle-4 { animation-delay: 380ms; }
-
-@keyframes count-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.count-in { animation: count-in 600ms var(--ease) both; }
 
 button, a {
   transition: transform 240ms var(--ease), color 240ms ease, background-color 240ms ease, border-color 240ms ease, opacity 240ms ease;
 }
 button:active, a:active { transform: scale(0.98); }
 
+@keyframes settle {
+  from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.settle { animation: settle 700ms var(--ease) both; }
+.settle-1 { animation-delay: 80ms; }
+.settle-2 { animation-delay: 180ms; }
+.settle-3 { animation-delay: 280ms; }
+
 .tnum { font-variant-numeric: tabular-nums; }
 
 .dropcap::first-letter {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 900;
   float: left;
-  font-size: 4.4em;
-  line-height: 0.85;
-  padding: 0.04em 0.12em 0 0;
-  color: var(--olive-dark);
+  font-size: 5.6em;
+  line-height: 0.78;
+  padding: 0.06em 0.12em 0 0;
+  color: var(--red-deep);
   font-style: normal;
+}
+
+/* Triple-rule divider, like newspaper section breaks */
+.triple-rule {
+  background: var(--ink);
+  height: 1px;
+  position: relative;
+  margin: 0;
+}
+.triple-rule::before, .triple-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ink);
+}
+.triple-rule::before { top: -4px; }
+.triple-rule::after { top: 4px; }
+
+/* Heavy ALL-CAPS section labels */
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--red-deep);
+}
+
+/* Newspaper-column flow */
+.newspaper-cols {
+  column-count: 1;
+  column-gap: 2.5rem;
+}
+@media (min-width: 768px) {
+  .newspaper-cols { column-count: 2; }
 }
 
 details.faq summary { list-style: none; cursor: pointer; }
 details.faq summary::-webkit-details-marker { display: none; }
-details.faq[open] .faq-icon { transform: rotate(45deg); }
-.faq-icon { transition: transform 280ms var(--ease); }
+details.faq[open] .faq-mark { transform: rotate(45deg); }
+.faq-mark { transition: transform 280ms var(--ease); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

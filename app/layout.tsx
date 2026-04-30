@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Public_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Source_Serif_4({
+const display = Playfair_Display({
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700", "800", "900"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
 
-const body = Public_Sans({
+const body = Manrope({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const mono = IBM_Plex_Mono({
+const mono = JetBrains_Mono({
   variable: "--font-mono",
   weight: ["400", "500"],
   subsets: ["latin"],
@@ -42,7 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}
     >
-      <body className="min-h-[100dvh] flex flex-col bg-cream text-ink relative">
+      <body className="min-h-[100dvh] flex flex-col bg-newsprint text-ink relative">
         <div className="grain" aria-hidden="true" />
         {children}
       </body>
