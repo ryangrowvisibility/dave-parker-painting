@@ -1,44 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --paper:    oklch(0.965 0.012 86);
-  --vellum:   oklch(0.94 0.02 86);
-  --bone:     oklch(0.91 0.022 86);
-  --ink:      oklch(0.20 0.02 60);
-  --ink-soft: oklch(0.38 0.02 60);
-  --rule:     oklch(0.82 0.014 86);
-  --oxblood:  oklch(0.42 0.10 28);
-  --brass:    oklch(0.62 0.10 75);
-  --hunter:   oklch(0.40 0.07 145);
+  /* Editorial Luxury, with a quieter (cool-navy + sage) take vs Hector's espresso/bronze */
+  --paper: oklch(0.972 0.014 82);
+  --vellum: oklch(0.93 0.020 80);
+  --linen: oklch(0.88 0.024 76);
+  --ink: oklch(0.18 0.020 250);
+  --ink-soft: oklch(0.34 0.018 250);
+  --ink-quiet: oklch(0.55 0.014 250);
+  --sage: oklch(0.50 0.045 155);
+  --brass: oklch(0.62 0.110 80);
+  --hairline: oklch(0.18 0.020 250 / 0.12);
+  --hairline-strong: oklch(0.18 0.020 250 / 0.20);
+
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html, body {
+  background: var(--paper) !important;
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-body), Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-vellum: var(--vellum);
-  --color-bone: var(--bone);
+  --color-linen: var(--linen);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-rule: var(--rule);
-  --color-oxblood: var(--oxblood);
+  --color-ink-quiet: var(--ink-quiet);
+  --color-sage: var(--sage);
   --color-brass: var(--brass);
-  --color-hunter: var(--hunter);
+  --color-hairline: var(--hairline);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
-  --font-script: var(--font-script);
 }
 
-html { background: var(--paper) !important; }
-body { background: var(--paper) !important; color: var(--ink); font-feature-settings: "ss01"; }
+::selection { background: var(--sage); color: var(--paper); }
 
-@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-.rise { animation: rise 800ms ease-out both; }
-
-.deckle {
-  border-image: none;
-  background:
-    radial-gradient(circle at top left, var(--paper) 98%, transparent 100%) center/100% 100% no-repeat,
-    var(--vellum);
+/* Subtle film grain — Editorial Luxury signature */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.12 0 0 0 0 0.2 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-@media (prefers-reduced-motion: reduce) { .rise { animation: none !important; } }
+/* Scroll-lift entry */
+@keyframes lift {
+  0%   { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.lift { animation: lift 800ms var(--ease) both; }
+.lift-1 { animation-delay: 80ms; }
+.lift-2 { animation-delay: 180ms; }
+.lift-3 { animation-delay: 280ms; }
+.lift-4 { animation-delay: 380ms; }
+
+button, a {
+  transition: transform 240ms var(--ease), color 240ms ease, background-color 240ms ease, border-color 240ms ease;
+}
+button:active, a:active { transform: scale(0.98); }
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+.rule { background: var(--hairline); height: 1px; }
+.rule-strong { background: var(--hairline-strong); height: 1px; }
+
+/* Year-span horizontal rule with chevrons */
+.year-span {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+.year-span::before, .year-span::after {
+  content: "";
+  height: 1px;
+  background: var(--hairline-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
