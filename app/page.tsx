@@ -14,12 +14,6 @@ const FACEBOOK = "https://www.facebook.com/davidparkerpaintings/";
 const MAPS_EMBED =
   "https://maps.google.com/maps?q=3463%20E%20Dayton%20Ave%2C%20Fresno%2C%20CA%2093726&output=embed";
 
-const ArrowOut = ({ className = "" }: { className?: string }) => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
-    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-  </svg>
-);
-
 const PhoneIcon = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.5" />
@@ -67,319 +61,286 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Floating Island Nav — high-end signature */}
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-40 lift">
-        <div className="bg-paper/75 backdrop-blur-xl ring-1 ring-ink/10 rounded-full pl-5 pr-1.5 py-1.5 flex items-center gap-5 shadow-[0_24px_60px_-30px_oklch(0.18_0.02_250_/_0.20)]">
-          <a href="/" className="flex items-center gap-2.5">
-            <span className="block w-2 h-2 rounded-full bg-sage" />
-            <span className="font-display text-[16px] tracking-[-0.005em] text-ink">
+      {/* TOP — slim editorial masthead, NOT a glass pill */}
+      <header className="border-b border-hairline">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+          <a href="/" className="flex items-baseline gap-3">
+            <span className="font-display text-[22px] font-medium tracking-[-0.005em] text-ink">
               Dave Parker Painting
             </span>
+            <span className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-quiet hidden sm:inline">
+              Est. 1997
+            </span>
           </a>
-          <span className="hidden md:block h-4 w-px bg-ink/15" />
-          <nav className="hidden md:flex items-center gap-5 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-soft">
-            <a href="#tenure" className="hover:text-sage">Tenure</a>
-            <a href="#work" className="hover:text-sage">Work</a>
-            <a href="#standards" className="hover:text-sage">Standards</a>
-            <a href="#contact" className="hover:text-sage">Contact</a>
+          <nav className="hidden md:flex items-center gap-7 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-soft">
+            <a href="#story" className="hover:text-olive-dark">Story</a>
+            <a href="#work" className="hover:text-olive-dark">Work</a>
+            <a href="#standards" className="hover:text-olive-dark">Standards</a>
+            <a href="#contact" className="hover:text-olive-dark">Contact</a>
           </nav>
           <a
             href={PHONE_HREF}
-            className="group bg-ink text-paper rounded-full pl-4 pr-1.5 py-1.5 flex items-center gap-2.5 font-mono text-[10.5px] uppercase tracking-[0.16em] hover:bg-sage"
+            className="inline-flex items-center gap-2 text-[13px] tnum text-ink hover:text-olive-dark"
           >
-            <span className="hidden sm:inline tnum">{PHONE}</span>
-            <span className="sm:hidden">Call</span>
-            <span className="w-7 h-7 rounded-full bg-paper/15 flex items-center justify-center group-hover:translate-x-[1px] group-hover:-translate-y-[1px]">
-              <ArrowOut className="text-paper" />
-            </span>
+            <PhoneIcon /> <span className="hidden sm:inline">{PHONE}</span>
           </a>
         </div>
       </header>
 
-      {/* HERO — left-aligned, asymmetric, generous whitespace */}
-      <section className="relative pt-44 pb-24 lg:pt-52 lg:pb-32">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-          <div className="lift">
-            <span className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              Fresno · Painter · Since 1997
-            </span>
-          </div>
-
-          <h1 className="lift lift-1 mt-12 font-display font-normal text-[clamp(3.4rem,11vw,9.6rem)] leading-[0.92] tracking-[-0.025em] text-ink max-w-[16ch]">
-            Fresno&apos;s painter,
-            <br />
-            <em className="italic font-normal text-sage">since 1997.</em>
-          </h1>
-
-          <div className="lift lift-2 mt-14 grid lg:grid-cols-12 gap-10 items-end">
-            <p className="lg:col-span-7 text-[18px] leading-[1.55] text-ink-soft max-w-[58ch]">
-              David B. Parker Sr. has been painting Fresno houses for{" "}
-              <span className="text-ink">twenty-eight years</span>, out of the
-              same shop on Dayton Avenue, finishing the kind of interior and
-              exterior work that gets done correctly the first time and stays
-              done.
+      {/* HERO — Editorial Split with prose-driven hero (NOT bento, NOT centered) */}
+      <section className="border-b border-hairline">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 pt-20 pb-24 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-x-12 gap-y-10">
+          <div className="lg:col-span-7 settle">
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-olive-dark mb-10">
+              A short history · Fresno, California
             </p>
 
-            <div className="lg:col-span-5 flex flex-wrap items-center gap-4 lg:justify-end">
+            <h1 className="font-display font-normal text-[clamp(2.8rem,7.4vw,7.4rem)] leading-[0.96] tracking-[-0.022em] text-ink max-w-[18ch]">
+              A painter, in
+              <br />
+              Fresno,{" "}
+              <em className="italic font-normal text-olive-dark">since
+              <br />
+              ninety-seven.</em>
+            </h1>
+          </div>
+
+          <div className="lg:col-span-5 lg:pt-2 settle settle-1">
+            <p className="dropcap text-[17px] leading-[1.6] text-ink-soft max-w-[44ch] font-body">
+              David B. Parker Sr. opened his shop on Dayton Avenue in 1997 and has not moved since.
+              For twenty-eight years he has finished interiors and exteriors for the same Fresno
+              neighborhoods — patient prep, even sheen, color that holds against the Central Valley
+              sun. The truck still parks in the same driveway it parked in twenty years ago.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3">
               <a
                 href={PHONE_HREF}
-                className="group inline-flex items-center gap-3 bg-ink text-paper rounded-full pl-7 pr-2 py-2 font-mono uppercase tracking-[0.18em] text-[11px] hover:bg-sage"
+                className="inline-flex items-center gap-3 bg-ink text-cream px-6 py-3.5 text-[13px] tracking-[0.04em] hover:bg-olive-dark"
               >
-                Get a quote
-                <span className="w-9 h-9 rounded-full bg-paper/15 flex items-center justify-center group-hover:translate-x-[2px] group-hover:-translate-y-[1px]">
-                  <ArrowOut className="text-paper" />
-                </span>
+                <PhoneIcon />
+                <span className="tnum">Call · {PHONE}</span>
               </a>
               <a
-                href="#tenure"
-                className="font-mono uppercase tracking-[0.18em] text-[11px] text-ink-soft hover:text-ink underline decoration-ink/20 underline-offset-[6px] hover:decoration-sage"
+                href="#story"
+                className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft hover:text-olive-dark underline decoration-hairline-strong underline-offset-[6px] hover:decoration-olive"
               >
                 Read the story
               </a>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* TENURE — Asymmetric Bento (varied column spans, NOT identical card grid) */}
-      <section id="tenure" className="border-y border-ink/10 bg-vellum/50">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-24 lg:py-36">
-          <div className="grid lg:grid-cols-12 gap-10 items-baseline mb-16">
-            <p className="lg:col-span-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-quiet">
-              § Tenure
-            </p>
-            <h2 className="lg:col-span-9 font-display text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[1.05] tracking-[-0.02em] text-ink max-w-[28ch]">
-              Same painter. Same Dayton Avenue.{" "}
-              <em className="italic text-sage">Same standards.</em>
-            </h2>
-          </div>
-
-          {/* Asymmetric bento — 12-col grid with varied spans */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
-            {/* Big year-span — col-span-7 row-span-2 */}
-            <div className="md:col-span-7 md:row-span-2 bg-paper rounded-[1.6rem] p-9 lg:p-12 ring-1 ring-ink/8 shadow-[inset_0_1px_0_oklch(1_0_0_/_0.7)] flex flex-col">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet">
-                Founded · still here
-              </p>
-
-              <div className="year-span mt-8">
-                <span className="font-display text-[clamp(3rem,7vw,5.8rem)] leading-none tnum text-ink">1997</span>
-                <span className="rule-strong opacity-60" />
-                <span className="font-display text-[clamp(3rem,7vw,5.8rem)] leading-none tnum text-sage italic">2025</span>
-              </div>
-
-              <p className="mt-10 font-display italic text-[1.6rem] leading-[1.3] text-ink max-w-[26ch]">
-                Twenty-eight years on the same Fresno address — finishing rooms,
-                houses, and trim for the same neighborhoods.
-              </p>
-
-              <div className="mt-auto pt-10 border-t border-ink/10 grid grid-cols-2 gap-x-6 gap-y-4 text-[12.5px]">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-1.5">Owner</p>
-                  <p className="text-ink">David B. Parker Sr.</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-1.5">Trade</p>
-                  <p className="text-ink">Owner-operated · family-run</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Address card — col-span-5 row-span-1 */}
-            <div className="md:col-span-5 bg-paper rounded-[1.6rem] p-8 ring-1 ring-ink/8 shadow-[inset_0_1px_0_oklch(1_0_0_/_0.7)]">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet">
-                Address since founding
-              </p>
-              <p className="mt-6 font-display text-[1.7rem] leading-[1.15] text-ink">
-                3463 E Dayton Ave
-              </p>
-              <p className="text-[14px] text-ink-soft mt-1.5">Fresno, CA 93726</p>
-              <p className="mt-7 text-[13px] leading-[1.5] text-ink-soft">
-                The shop has not moved since 1997. If you grew up in the 93726,
-                you have driven past it.
-              </p>
-            </div>
-
-            {/* Reviews/social — col-span-5 row-span-1 */}
-            <div className="md:col-span-5 bg-paper rounded-[1.6rem] p-8 ring-1 ring-ink/8 shadow-[inset_0_1px_0_oklch(1_0_0_/_0.7)] flex flex-col">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet">
-                What customers say
-              </p>
-              <p className="mt-6 font-display italic text-[1.25rem] leading-[1.4] text-ink flex-1">
-                &ldquo;Strong reputation, perfect customer satisfaction&rdquo; —
-                consistently, across third-party listings.
-              </p>
-              <div className="mt-7 flex items-center gap-4 text-[13px] font-mono uppercase tracking-[0.14em]">
-                <a
-                  href={YELP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-ink hover:text-sage"
-                >
-                  <YelpIcon /> Yelp
-                </a>
-                <span className="w-px h-3 bg-ink/15" />
-                <a
-                  href={FACEBOOK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-ink hover:text-sage"
-                >
-                  <FacebookIcon /> Facebook
-                </a>
-              </div>
-            </div>
+        {/* Year span as a thin masthead band */}
+        <div className="border-t border-hairline bg-bone/40">
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-6 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3">
+            <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-quiet">
+              Volume XXVIII · The same Dayton Avenue shop
+            </span>
+            <span className="font-display tnum text-[20px] tracking-[-0.005em] text-ink">
+              <span className="text-ink-quiet">1997</span>{" "}
+              <span className="font-mono text-[14px] text-ink-quiet">·····························</span>{" "}
+              <em className="italic text-olive-dark">2025</em>
+            </span>
           </div>
         </div>
       </section>
 
-      {/* WORK — TWO services as editorial columns, NOT cards */}
-      <section id="work" className="bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-24 lg:py-40">
-          <div className="grid lg:grid-cols-12 gap-10 items-baseline mb-20">
-            <p className="lg:col-span-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-quiet">
-              § Work
+      {/* STORY — long-form editorial column with marginalia */}
+      <section id="story" className="border-b border-hairline">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-32 lg:py-44 grid lg:grid-cols-12 gap-x-12">
+          <aside className="lg:col-span-3 lg:pr-6 mb-12 lg:mb-0">
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-quiet mb-7">
+              I · The painter
             </p>
-            <h2 className="lg:col-span-9 font-display text-[clamp(2.4rem,5.2vw,4.4rem)] leading-[1.0] tracking-[-0.02em] text-ink max-w-[22ch]">
-              Two trades, done <em className="italic text-sage">in the same crew.</em>
+            <p className="font-display italic text-[1.4rem] leading-[1.3] text-olive-dark">
+              Owner-operated. Family-run. The same crew that started your house finishes the trim on the last door.
+            </p>
+            <div className="mt-10 pt-7 border-t border-hairline-strong space-y-3 font-mono text-[11px] tracking-[0.04em] text-ink-soft">
+              <p><span className="text-ink-quiet">Owner</span> &nbsp; David B. Parker Sr.</p>
+              <p><span className="text-ink-quiet">Trade</span> &nbsp; Painting & Decorating</p>
+              <p><span className="text-ink-quiet">Founded</span> &nbsp; <span className="tnum">1997</span></p>
+            </div>
+          </aside>
+
+          <div className="lg:col-span-8 lg:col-start-5">
+            <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.08] tracking-[-0.018em] text-ink mb-10 max-w-[24ch]">
+              Twenty-eight summers, the same painter, the same address.
+            </h2>
+
+            <p className="text-[16.5px] leading-[1.7] text-ink-soft max-w-[58ch]">
+              When David opened the shop on Dayton Avenue in 1997, much of north Fresno had not yet
+              been built. Twenty-eight summers later he is still working out of that shop, still
+              answering the same phone number, still finishing rooms and exteriors for the
+              neighborhoods that grew up around him.
+            </p>
+
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-ink-soft max-w-[58ch]">
+              The work is residential. The crew is small. The painter who walks the job on day one
+              is the same painter who hands you back the keys. We do not subcontract the cabinet
+              doors or the trim coat. The standard is the same on the inside of the closet as it is
+              on the corner above the front door.
+            </p>
+
+            <p className="mt-5 text-[16.5px] leading-[1.7] text-ink-soft max-w-[58ch]">
+              Most jobs come in by phone. A walk-through is short. A quote arrives the same day or
+              the next. The work starts within the week. There is nothing innovative about any of
+              it — just the patience that comes from doing it for almost three decades.
+            </p>
+
+            <p className="mt-12 font-mono text-[10.5px] uppercase tracking-[0.22em] text-olive-dark">
+              — David B. Parker Sr.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* WORK — two trades as full-width editorial articles, not cards */}
+      <section id="work" className="border-b border-hairline bg-bone/30">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-32 lg:py-44">
+          <div className="grid lg:grid-cols-12 gap-12 mb-20 items-baseline">
+            <p className="lg:col-span-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-quiet">
+              II · The work
+            </p>
+            <h2 className="lg:col-span-9 font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.04] tracking-[-0.02em] text-ink max-w-[24ch]">
+              Two trades, finished by{" "}
+              <em className="italic text-olive-dark">the same crew.</em>
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-y-20 gap-x-16">
-            <article>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-brass mb-5">
-                Interior · whole-house and rooms
+          <article className="grid lg:grid-cols-12 gap-x-12 gap-y-7 pb-16 mb-16 border-b border-hairline">
+            <div className="lg:col-span-3">
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-olive-dark">
+                Interior
               </p>
-              <h3 className="font-display text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.012em] text-ink mb-7">
-                Walls, ceilings, trim, doors, cabinets.
+              <p className="text-[12.5px] text-ink-quiet mt-1.5">
+                Whole-house, room, cabinet
+              </p>
+            </div>
+            <div className="lg:col-span-9 lg:pl-4">
+              <h3 className="font-display text-[clamp(1.8rem,3.4vw,2.8rem)] leading-[1.1] tracking-[-0.014em] text-ink max-w-[22ch]">
+                Walls, ceilings, trim, doors, cabinets — finished even, true color, cut lines that hold.
               </h3>
-              <p className="text-[15.5px] leading-[1.65] text-ink-soft max-w-[44ch]">
-                Patient prep — fill, sand, mask, prime where it matters. Cut
-                lines that hold against five years of door slams. Even sheen
-                across walls and ceilings, true color through trim and
-                base. Most rooms repaint in a day; whole houses depend on the
-                square footage and the shape of the work.
+              <p className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[60ch]">
+                Patient preparation — fill, sand, mask, prime where it matters. Most rooms repaint
+                in a single day; whole-house work takes as long as the shape of the work demands.
+                The result should be invisible: the eye sees the room, not the paint.
               </p>
-              <ul className="mt-7 pt-6 border-t border-ink/10 space-y-2.5 text-[13px] text-ink-soft">
+              <ul className="mt-7 grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-6 font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-soft">
                 <li>· Whole-house repaints</li>
                 <li>· Cabinet refinishes</li>
-                <li>· Crown, base, and door trim</li>
-                <li>· Texture-matching for repairs</li>
-                <li>· Color consultation on-site</li>
+                <li>· Trim · base · crown</li>
+                <li>· Doors</li>
+                <li>· Texture-matching</li>
+                <li>· Color consultation</li>
               </ul>
-            </article>
+            </div>
+          </article>
 
-            <article>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-brass mb-5">
-                Exterior · stucco, wood, trim
+          <article className="grid lg:grid-cols-12 gap-x-12 gap-y-7">
+            <div className="lg:col-span-3">
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-olive-dark">
+                Exterior
               </p>
-              <h3 className="font-display text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.012em] text-ink mb-7">
-                Painted to last a Fresno summer.
+              <p className="text-[12.5px] text-ink-quiet mt-1.5">
+                Stucco, wood, trim
+              </p>
+            </div>
+            <div className="lg:col-span-9 lg:pl-4">
+              <h3 className="font-display text-[clamp(1.8rem,3.4vw,2.8rem)] leading-[1.1] tracking-[-0.014em] text-ink max-w-[22ch]">
+                Stucco, wood, and metal exteriors prepped for a Central Valley summer.
               </h3>
-              <p className="text-[15.5px] leading-[1.65] text-ink-soft max-w-[44ch]">
-                Twenty-eight summers on the same roads has taught us which
-                products hold up and which fade. We pressure-wash, scrape, prime
-                the failure points, and finish with paints chosen for stucco
-                expansion, sun exposure, and the way Fresno weather actually
-                works on a wall.
+              <p className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[60ch]">
+                Twenty-eight summers on the same Fresno roads has taught us which products hold and
+                which fade. We pressure-wash, scrape failure points, prime where it matters, and
+                finish with paints chosen for stucco expansion, sun exposure, and the way Fresno
+                weather actually works on a wall.
               </p>
-              <ul className="mt-7 pt-6 border-t border-ink/10 space-y-2.5 text-[13px] text-ink-soft">
+              <ul className="mt-7 grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-6 font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-soft">
                 <li>· Stucco · siding</li>
                 <li>· Soffits · eaves · fascia</li>
-                <li>· Garage doors · entry doors</li>
-                <li>· Iron and metal exterior trim</li>
-                <li>· Color refresh for HOA-bound homes</li>
+                <li>· Garage doors</li>
+                <li>· Entry doors</li>
+                <li>· Iron exterior trim</li>
+                <li>· HOA color refresh</li>
               </ul>
-            </article>
-          </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      {/* STANDARDS — single-paragraph dark band, Editorial Luxury vibe */}
-      <section id="standards" className="bg-ink text-paper">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-12 py-32 lg:py-44">
-          <span className="inline-flex items-center gap-2 rounded-full border border-paper/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-paper/70">
-            <span className="w-1 h-1 rounded-full bg-brass" />
-            Standards · since 1997
-          </span>
-
-          <p className="mt-12 font-display text-[clamp(1.8rem,3.6vw,3rem)] leading-[1.18] tracking-[-0.012em] text-paper max-w-[26ch]">
-            What it means to{" "}
-            <em className="italic text-brass">paint a house once.</em>
+      {/* STANDARDS — full-bleed warm-dark band */}
+      <section id="standards" className="bg-olive-dark text-cream">
+        <div className="max-w-[1080px] mx-auto px-6 lg:px-12 py-32 lg:py-44">
+          <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-cream/55">
+            III · Standards
           </p>
 
-          <p className="mt-12 text-[17px] leading-[1.7] text-paper/80 max-w-[68ch]">
-            A finished room should be invisible. The eye sees the space, not the
-            paint. Cut lines stay where you cut them. Sheens stop where they are
-            supposed to stop. The corner above the closet door — the one nobody
-            ever paints right — looks the same as the rest of the wall. We do
-            not paint over rot. We do not skip primer to make a number work. We
-            show up when we said we would, finish when we said we would, and
-            leave the room cleaner than we found it.{" "}
-            <span className="font-display italic text-paper">A painted house
-            should look painted once.</span> Twenty-eight years has taught us
-            what that takes.
+          <p className="mt-10 font-display italic text-[clamp(1.8rem,3.4vw,2.8rem)] leading-[1.18] tracking-[-0.012em] text-cream max-w-[26ch]">
+            What it means to paint a house once.
           </p>
 
-          <p className="mt-10 font-mono text-[10.5px] uppercase tracking-[0.22em] text-paper/45">
+          <p className="mt-12 text-[17px] leading-[1.75] text-cream/85 max-w-[68ch]">
+            A finished room should be invisible. The eye sees the space, not the paint. Cut lines
+            stay where you cut them. Sheens stop where they are supposed to stop. The corner above
+            the closet door — the one nobody ever paints right — looks the same as the rest of the
+            wall. We do not paint over rot. We do not skip primer to make a number work. We show up
+            when we said we would, finish when we said we would, and leave the room cleaner than we
+            found it. <span className="font-display italic">A painted house should look painted
+            once.</span> Twenty-eight years has taught us what that takes.
+          </p>
+
+          <p className="mt-12 font-mono text-[10.5px] uppercase tracking-[0.22em] text-cream/45">
             — David B. Parker Sr., owner
           </p>
         </div>
       </section>
 
-      {/* CONTACT — split, dual-phone, simple framed map */}
-      <section id="contact" className="bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-24 lg:py-36 grid lg:grid-cols-12 gap-12 lg:gap-20">
+      {/* CONTACT */}
+      <section id="contact" className="bg-cream">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-32 lg:py-44 grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div className="lg:col-span-5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              Quote · same-week start on most jobs
-            </span>
-
-            <h2 className="mt-9 font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.0] tracking-[-0.02em] text-ink">
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-olive-dark">
+              IV · Quote
+            </p>
+            <h2 className="mt-7 font-display text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[1.04] tracking-[-0.018em] text-ink max-w-[18ch]">
               Two ways to reach{" "}
-              <em className="italic text-sage">the painter.</em>
+              <em className="italic text-olive-dark">the painter.</em>
             </h2>
-
-            <p className="mt-7 max-w-[42ch] text-[16px] leading-[1.65] text-ink-soft">
-              The shop line is the fastest way to a quote. The direct line is
-              for ongoing jobs and repeat customers.
+            <p className="mt-6 text-[16px] leading-[1.65] text-ink-soft max-w-[44ch]">
+              The shop line is the fastest way to a quote. The direct line is for ongoing jobs and
+              repeat customers.
             </p>
 
-            <div className="mt-12 space-y-7">
+            <div className="mt-12 space-y-6">
               <a
                 href={PHONE_HREF}
-                className="group flex items-center justify-between gap-4 border-t border-ink/12 pt-6 hover:border-sage/40"
+                className="group flex items-baseline justify-between gap-4 border-t border-hairline-strong pt-6 hover:border-olive"
               >
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-1.5">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-2">
                     Shop · primary
                   </p>
-                  <p className="font-display text-[2rem] tnum text-ink leading-none">
+                  <p className="font-display text-[2.2rem] tnum text-ink leading-none">
                     {PHONE}
                   </p>
                 </div>
-                <span className="w-11 h-11 rounded-full bg-ink text-paper flex items-center justify-center group-hover:bg-sage group-hover:translate-x-[2px]">
-                  <ArrowOut />
-                </span>
+                <span className="text-olive-dark group-hover:translate-x-1 transition-transform">→</span>
               </a>
 
               <a
                 href={PHONE_DIRECT_HREF}
-                className="group flex items-center justify-between gap-4 border-t border-ink/12 pt-6 hover:border-sage/40"
+                className="group flex items-baseline justify-between gap-4 border-t border-hairline pt-6 hover:border-olive"
               >
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-1.5">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet mb-2">
                     Owner direct
                   </p>
-                  <p className="font-display text-[2rem] tnum text-ink-soft leading-none">
+                  <p className="font-display text-[2.2rem] tnum text-ink-soft leading-none">
                     {PHONE_DIRECT}
                   </p>
                 </div>
-                <span className="w-11 h-11 rounded-full bg-vellum text-ink flex items-center justify-center group-hover:bg-sage group-hover:text-paper group-hover:translate-x-[2px]">
-                  <PhoneIcon />
-                </span>
+                <span className="text-olive group-hover:translate-x-1 transition-transform">→</span>
               </a>
             </div>
 
@@ -395,10 +356,10 @@ export default function Page() {
               <div className="grid grid-cols-[110px_1fr] gap-x-5">
                 <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-quiet pt-0.5">Find us</dt>
                 <dd className="flex items-center gap-4 text-ink">
-                  <a href={YELP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-sage">
+                  <a href={YELP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-olive-dark">
                     <YelpIcon /> Yelp
                   </a>
-                  <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-sage">
+                  <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-olive-dark">
                     <FacebookIcon /> Facebook
                   </a>
                 </dd>
@@ -407,37 +368,34 @@ export default function Page() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="rounded-[1.6rem] overflow-hidden ring-1 ring-ink/10 bg-vellum">
+            <div className="border border-hairline-strong">
               <iframe
                 src={MAPS_EMBED}
                 title="Dave Parker Painting · 3463 E Dayton Ave"
                 width="100%"
                 height="540"
-                style={{ border: 0, display: "block", filter: "grayscale(0.4) contrast(0.95) sepia(0.04)" }}
+                style={{ border: 0, display: "block", filter: "sepia(0.18) saturate(0.85) contrast(0.96)" }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <p className="mt-4 font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-quiet">
+              The shop · since 1997
+            </p>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-ink/10 bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <span className="block w-2 h-2 rounded-full bg-sage" />
-            <p className="font-display text-[15px] tracking-[-0.005em] text-ink">
-              Dave Parker Painting
-            </p>
-          </div>
+      <footer className="border-t border-hairline bg-bone/30">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <p className="font-display text-[16px] tracking-[-0.005em] text-ink">
+            Dave Parker Painting
+          </p>
           <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-quiet">
             Fresno, CA · Est. 1997 · Owner-operated
           </p>
-          <a
-            href={PHONE_HREF}
-            className="font-mono tnum text-[12px] tracking-[0.04em] text-ink hover:text-sage"
-          >
+          <a href={PHONE_HREF} className="font-mono tnum text-[12.5px] text-ink hover:text-olive-dark">
             {PHONE}
           </a>
         </div>

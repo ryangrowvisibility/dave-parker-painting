@@ -1,23 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Editorial Luxury, with a quieter (cool-navy + sage) take vs Hector's espresso/bronze */
-  --paper: oklch(0.972 0.014 82);
-  --vellum: oklch(0.93 0.020 80);
-  --linen: oklch(0.88 0.024 76);
-  --ink: oklch(0.18 0.020 250);
-  --ink-soft: oklch(0.34 0.018 250);
-  --ink-quiet: oklch(0.55 0.014 250);
-  --sage: oklch(0.50 0.045 155);
-  --brass: oklch(0.62 0.110 80);
-  --hairline: oklch(0.18 0.020 250 / 0.12);
-  --hairline-strong: oklch(0.18 0.020 250 / 0.20);
+  /* Editorial Luxury — but richer/warmer/darker than V2's cool-navy/sage */
+  --cream: oklch(0.96 0.020 80);
+  --bone: oklch(0.93 0.024 78);
+  --linen: oklch(0.88 0.030 76);
+  --olive-dark: oklch(0.34 0.060 110);
+  --olive: oklch(0.50 0.075 110);
+  --olive-light: oklch(0.70 0.055 105);
+  --ink: oklch(0.18 0.018 70);          /* warm dark — not cool navy */
+  --ink-soft: oklch(0.36 0.018 70);
+  --ink-quiet: oklch(0.55 0.014 70);
+  --umber: oklch(0.42 0.085 55);        /* warm brown accent — replaces V2 sage */
+  --hairline: oklch(0.18 0.018 70 / 0.12);
+  --hairline-strong: oklch(0.18 0.018 70 / 0.22);
 
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 html, body {
-  background: var(--paper) !important;
+  background: var(--cream) !important;
   color: var(--ink);
 }
 
@@ -28,65 +30,61 @@ body {
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-vellum: var(--vellum);
+  --color-cream: var(--cream);
+  --color-bone: var(--bone);
   --color-linen: var(--linen);
+  --color-olive-dark: var(--olive-dark);
+  --color-olive: var(--olive);
+  --color-olive-light: var(--olive-light);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-quiet: var(--ink-quiet);
-  --color-sage: var(--sage);
-  --color-brass: var(--brass);
+  --color-umber: var(--umber);
   --color-hairline: var(--hairline);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
 }
 
-::selection { background: var(--sage); color: var(--paper); }
+::selection { background: var(--olive-dark); color: var(--cream); }
 
-/* Subtle film grain — Editorial Luxury signature */
+/* Subtle film grain on warm cream — Editorial Luxury signature */
 .grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.035;
+  opacity: 0.045;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.12 0 0 0 0 0.2 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.05 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* Scroll-lift entry */
-@keyframes lift {
-  0%   { opacity: 0; transform: translateY(28px); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+@keyframes settle {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
-.lift { animation: lift 800ms var(--ease) both; }
-.lift-1 { animation-delay: 80ms; }
-.lift-2 { animation-delay: 180ms; }
-.lift-3 { animation-delay: 280ms; }
-.lift-4 { animation-delay: 380ms; }
+.settle { animation: settle 800ms var(--ease) both; }
+.settle-1 { animation-delay: 80ms; }
+.settle-2 { animation-delay: 180ms; }
+.settle-3 { animation-delay: 280ms; }
+.settle-4 { animation-delay: 380ms; }
 
 button, a {
-  transition: transform 240ms var(--ease), color 240ms ease, background-color 240ms ease, border-color 240ms ease;
+  transition: transform 240ms var(--ease), color 240ms ease, background-color 240ms ease, border-color 240ms ease, opacity 240ms ease;
 }
 button:active, a:active { transform: scale(0.98); }
 
 .tnum { font-variant-numeric: tabular-nums; }
 
-.rule { background: var(--hairline); height: 1px; }
-.rule-strong { background: var(--hairline-strong); height: 1px; }
-
-/* Year-span horizontal rule with chevrons */
-.year-span {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
-}
-.year-span::before, .year-span::after {
-  content: "";
-  height: 1px;
-  background: var(--hairline-strong);
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 600;
+  float: left;
+  font-size: 4.4em;
+  line-height: 0.85;
+  padding: 0.04em 0.12em 0 0;
+  color: var(--olive-dark);
+  font-style: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
